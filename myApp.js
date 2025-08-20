@@ -1,9 +1,11 @@
 require("dotenv").config();
 let express = require("express");
 let app = express();
+let bodyParser = require("body-parser");
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // app.get("/json", function (req, res) {
 //   if(process.env.MESSAGE_STYLE === "uppercase"){
@@ -40,8 +42,8 @@ app.get("/name", function (req, res) {
 });
 
 app.post("/name", function (req, res) {
-  let first = req.query.first;
-  let last = req.query.last;
+  let first = req.body.first;
+  let last = req.body.last;
   res.json({ name: `${first} ${last}` });
 });
 
