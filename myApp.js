@@ -3,7 +3,7 @@ let app = express();
 
 
 
-console.log("Hello Word");
+console.log("Hello World");
 
 
 
